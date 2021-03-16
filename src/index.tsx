@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as ReactDOM from 'react-dom'
 
 /* simple typing with option */
@@ -26,14 +26,27 @@ import * as ReactDOM from 'react-dom'
 // }
 
 /* function */
+
 function Test() {
   const [test, setTest] = useState<null | number>(null)
+  const colors: string[] = ['black', 'gray']
   const handleClick = (): void => setTest(test + 1)
+
+  useEffect(() => {
+    const even: boolean = test % 2 === 0
+
+    console.log(test % 2)
+    if (even) {
+      document.body.style.backgroundColor = colors[0]
+    } else {
+      document.body.style.backgroundColor = colors[1]
+    }
+  }, [test])
 
   return (
     <>
       <button onClick={handleClick}>+</button>
-      <p>{test}</p>
+      <p style={{ color: 'white' }}>{test}</p>
     </>
   )
 }
