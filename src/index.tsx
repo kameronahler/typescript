@@ -28,10 +28,11 @@ import * as ReactDOM from 'react-dom'
 /* function */
 function Test() {
   const [test, setTest] = useState<null | number>(null)
+  const handleClick = (): void => setTest(test + 1)
 
   return (
     <>
-      <button onClick={() => setTest(test + 1)}>+</button>
+      <button onClick={handleClick}>+</button>
       <p>{test}</p>
     </>
   )
